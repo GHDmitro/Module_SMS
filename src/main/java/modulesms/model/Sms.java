@@ -1,7 +1,5 @@
-package modulesms.model;
-
-/**
- * Created by macbookair on 05.04.17.
+package modulesms.model; /**
+ * Created by Dmytro Tymoshenko on 05.04.17.
  */
 
 import javax.persistence.*;
@@ -11,7 +9,7 @@ import java.sql.Timestamp;
 @Table(name = "turbologinDima96")
 public class Sms {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -19,13 +17,13 @@ public class Sms {
     @Transient
     private String msgId;
 
-    @Column
+    @Column(length = 21)
     private String number;
 
-    @Column
+    @Column(length = 11)
     private String sign;
 
-    @Column
+    @Column(length = 1530)
     private String message;
 
     @Transient

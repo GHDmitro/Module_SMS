@@ -13,7 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by macbookair on 05.04.17.
+ * Created by Dmytro Tymoshenko on 05.04.17.
  */
 @Service
 public class SmsServiceImpl implements SmsService {
@@ -21,21 +21,21 @@ public class SmsServiceImpl implements SmsService {
     private SmsRepository smsRepository;
 
     @Override
-    public void addSms(String number, String message, String sign) {
+    public Sms addSms(String number, String sign, String message) {
         Sms sms = new Sms(number,message,sign);
         sms.setSendTime(Timestamp.valueOf(localTime()));
-        smsRepository.save(sms);
+        return smsRepository.save(sms);
     }
 
     @Override
-    public void addSmsToAll(List<String> numbers, String sign, String message) {
+    public List<Sms> addSmsToAll(List<String> numbers, String sign, String message) {
         List<Sms> smsList = new LinkedList<>();
         numbers.forEach((num)->{
             Sms sms = new Sms(num,message,sign);
             sms.setSendTime(Timestamp.valueOf(localTime()));
             smsList.add(sms);
         });
-        smsRepository.save(smsList);
+        return smsRepository.save(smsList);
     }
 
 
