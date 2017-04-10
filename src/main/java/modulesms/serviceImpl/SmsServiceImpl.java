@@ -24,7 +24,8 @@ public class SmsServiceImpl implements SmsService {
     public Sms addSms(String number, String sign, String message) {
         Sms sms = new Sms(number,message,sign);
         sms.setSendTime(Timestamp.valueOf(localTime()));
-        return smsRepository.save(sms);
+        sms = smsRepository.save(sms);
+        return sms;
     }
 
     @Override
