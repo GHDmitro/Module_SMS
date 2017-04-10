@@ -2,7 +2,6 @@ package modulesms.transactions;
 
 import modulesms.ModuleSmsApplicationTests;
 import modulesms.model.Sms;
-import modulesms.repository.SmsRepository;
 import modulesms.service.SmsService;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -27,8 +26,8 @@ public class ModuleTransactionsTest extends ModuleSmsApplicationTests {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private SmsService smsService;
-    @Autowired
-    private SmsRepository smsRepository;
+//    @Autowired
+//    private SmsRepository smsRepository;
 //    @After
 //    public void deleteAll(){
 //        smsRepository.deleteAll();

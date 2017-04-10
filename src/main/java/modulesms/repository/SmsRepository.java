@@ -2,12 +2,11 @@ package modulesms.repository;
 
 import modulesms.model.Sms;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 /**
  * Created by Dmytro Tymoshenko on 05.04.17.
  */
-@Repository //
+//@Repository //
 public interface SmsRepository extends JpaRepository<Sms, Long> {
 
 

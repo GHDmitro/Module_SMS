@@ -3,11 +3,13 @@ package modulesms.model; /**
  */
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
+
 //progkievua1
 @Entity
 @Table(name = "turbologinDima96")
-public class Sms {
+public class Sms implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -106,6 +108,7 @@ public class Sms {
         this.added = added;
     }
 
+
     public void setSendTime(Timestamp sendTime) {
         this.sendTime = sendTime;
     }
@@ -166,8 +169,9 @@ public class Sms {
         return added;
     }
 
+
     public Timestamp getSendTime() {
-        return sendTime;
+        return (Timestamp) sendTime;
     }
 
     public Timestamp getSended() {

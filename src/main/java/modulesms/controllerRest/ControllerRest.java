@@ -25,7 +25,7 @@ public class ControllerRest {
     @Autowired
     private SmsService smsService;
 
-    @RequestMapping(value = "/sendSmsOne", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/home", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Sms> sendSms(@RequestParam(name = "number", required = true) String number,
                                        @RequestParam(name = "sign", required = true) String sign,
                                        @RequestParam(name = "message", required = true) String message) {
