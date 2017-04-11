@@ -11,6 +11,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Dmytro Tymoshenko on 05.04.17.
@@ -22,19 +24,24 @@ public class SmsServiceImpl implements SmsService {
 
     @Override
     public Sms addSms(String number, String sign, String message) {
-        Sms sms = new Sms(number,message,sign);
-        sms.setSendTime(Timestamp.valueOf(localTime()));
-        sms = smsRepository.save(sms);
-        return sms;
+
+        if (parserNumber(number)) {
+            Sms sms = new Sms(number, message, sign);
+            sms.setSendTime(Timestamp.valueOf(localTime()));
+            sms = smsRepository.save(sms);
+            return sms;
+        }else return null;
     }
 
     @Override
     public List<Sms> addSmsToAll(List<String> numbers, String sign, String message) {
         List<Sms> smsList = new LinkedList<>();
         numbers.forEach((num)->{
-            Sms sms = new Sms(num,message,sign);
-            sms.setSendTime(Timestamp.valueOf(localTime()));
-            smsList.add(sms);
+            if (parserNumber(num)) {
+                Sms sms = new Sms(num, message, sign);
+                sms.setSendTime(Timestamp.valueOf(localTime()));
+                smsList.add(sms);
+            }
         });
         return smsRepository.save(smsList);
     }
@@ -49,6 +56,12 @@ public class SmsServiceImpl implements SmsService {
         return  ldt;
     }
 
+    private static boolean parserNumber(String number) {
+
+        Pattern p = Pattern.compile("^\\Q380\\E[0-9]{2}[0-9]{7}$");
+        Matcher m = p.matcher(number);
+        return m.matches();
+    }
 
 
 //    @Override

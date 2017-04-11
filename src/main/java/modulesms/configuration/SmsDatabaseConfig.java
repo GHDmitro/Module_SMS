@@ -33,16 +33,7 @@ public class SmsDatabaseConfig {
     private String jdbcUsername;
     @Value("${sms.jdbc.password}")
     private String jdbcPassword;
-//    @Value("${sms.hibernate.dialect}")
-//    private String sqlDialect;
-//    @Value("${sms.hibernate.connection.characterEncoding}")
-//    private String characterEncoding;
-//    @Value("${sms.hibernate.hbm2ddl.auto}")
-//    private String ddlAutoValue;
-//    @Value("${sms.hibernate.connection.CharSet}")
-//    private String charSet;
-//    @Value("${sms.hibernate.connection.useUnicode}")
-//    private String useUnicode;
+
 
     @Bean
     public LocalContainerEntityManagerFactoryBean smsEntityManagerFactory(
